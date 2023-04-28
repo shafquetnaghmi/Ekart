@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ekart {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'shop/base.css' %}">
+    <script src="https://kit.fontawesome.com/2a08ecdfef.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+   <ul id="header">
+    <li ><a href="{% url 'shop:product_list' %}" id="logo">Ekart</a></li>
+    <li><a href='#'  ><input id='search' type="text" placeholder="search" ></a></li>
+    <li><a href="#">Login</a></li>
+    <li  id="cart"><a href="{% url 'cart:cart_detail' %}" ><i class="fa-solid fa-cart-shopping"></i>Cart</a></li>
+    
+   </ul>
+   {% block content %}
+
+   {% endblock %}
+</body>
+</html>

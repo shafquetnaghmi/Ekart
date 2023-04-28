@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Payment successful{% endblock %}
+{% block content %}
+ <h1>Your Order has been successful</h1>
+ <p>Your order id is {{order.id}}</p>
+<p>Order related information has sent to your email </p>
+ 
+{% endblock %}

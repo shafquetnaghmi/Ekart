@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'orders/create_order.css' %}">
+ 
+<div id="address">
+
+    <h1>Address</h1>
+    <form  method="POST">
+        {{form.as_p}}
+        <input type="submit" value="CONTINUE" id="submit">
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

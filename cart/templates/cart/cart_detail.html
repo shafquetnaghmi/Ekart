@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Your shopping cart{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'cart/cart_detail.css' %}">
+<div class="cart">
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Qantity</th>
+            <th>Remove</th>
+            <th>Unit Price</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart %}
+        {% with product=item.product %}
+        <tr>
+            <td><a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="" width="50px" height="50px"></a></td>
+            <td>{{product.name}}</td>
+            <td>{{ item.quantity }}</td>
+            <td><form action="{% url 'cart:cart_remove' product.id %}" method="POST">
+               <input type="submit" value="Remove">
+               {% csrf_token %}
+            </form></td>
+            <td>₹{{ item.price }}</td>
+            <td>₹{{ item.total_price }}</td>
+        </tr>
+        
+
+        {% endwith %}
+        {% endfor %}
+        <tr>
+            <td>Total Price</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>₹{{cart.get_total_price}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<p id="check" style="float:right">
+    <a href="{% url 'shop:product_list' %}" id="continue-shopping">Continue shopping</a>
+    <a href="{% url 'orders:create' %}" id="checkout">PROCEED</a>
+</p>
+</div>
+
+{% endblock %}

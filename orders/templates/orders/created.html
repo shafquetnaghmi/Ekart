@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <h1>Thank You</h1>
+    <p>Your order has been created</p>
+    <p>Order id is {{order.id}}</p>
+    <p><a href="{% url 'shop:product_list' %}">Continue Shopping</a></p>
+</div>
+{% endblock %}
