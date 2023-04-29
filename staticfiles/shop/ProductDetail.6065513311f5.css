@@ -1,0 +1,20 @@
+.detail{
+    margin-left:10%;
+    margin-top: 10px;
+}
+#submit{
+    background-color:#ffc40c;
+    padding:8px 45px;
+    color:white;
+    border:white;
+    font-size:20px;
+    
+}
+
+#description{
+    margin-left: 30%;
+}
+
+#image{
+    border:1px solid lightgray;
+}

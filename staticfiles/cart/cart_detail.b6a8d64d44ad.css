@@ -1,0 +1,29 @@
+table, tr, th,td {
+    border:2px solid lightgrey;
+    text-align:center
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+   margin-top:5px;
+   
+}
+
+#checkout{
+    text-decoration: none;
+    color:#000000 ;
+    border:1px ;
+    padding:5px 20px 5px 20px;
+    background-color:#ffc40c ;
+    
+}
+#check{
+margin:20px;}
+#continue-shopping{
+    text-decoration: none;
+    color:#000000 ;
+    border:1px ;
+    padding:5px 20px 5px 20px;
+    background-color:#ffc40c ;
+    
+}

@@ -1,0 +1,27 @@
+table ,tr,td{
+    border:1px solid lightgrey;
+        text-align:center;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+#paynow{
+    text-decoration: none;
+    color:#000000 ;
+    border:1px ;
+    padding:10px 54px 10px 54px;
+    background-color:#ffc40c ;
+    margin:10px 0px 0px 20px ;
+    
+}
+#confirm{
+    text-decoration: none;
+    color:#000000 ;
+    border:1px ;
+    padding:10px 40px 10px 40px;
+    background-color:#ffc40c ;
+    margin:10px 0px 0px 20px ;
+    
+}
