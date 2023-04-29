@@ -25,6 +25,7 @@ SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+#DEBUG = config('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['*']
 
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -80,11 +82,19 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+ 'default': {
+ 'ENGINE': 'django.db.backends.postgresql',
+ 'NAME': 'Ekart',
+ 'USER': 'postgres',
+ 'PASSWORD':config('PASSWORD'),
+ }
 }
 
 
@@ -121,8 +131,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -143,3 +154,6 @@ EMAIL_USE_TLS = True
 
 STRIPE_PUBLISHABLE_KEY=config('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY=config('STRIPE_SECRET_KEY')
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
