@@ -91,9 +91,11 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 DATABASES = {
  'default': {
  'ENGINE': 'django.db.backends.postgresql',
- 'NAME': 'Ekart',
+ 'NAME': 'railway',
  'USER': 'postgres',
- 'PASSWORD':config('PASSWORD'),
+ 'PASSWORD' :config('PASSWORD'),
+ 'HOST':'containers-us-west-114.railway.app',
+ 'PORT':'7008'
  }
 }
 
