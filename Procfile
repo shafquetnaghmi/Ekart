@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic && gunicorn myshop.wsgi
+web: gunicorn myshop.wsgi --log-file -
