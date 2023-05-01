@@ -160,6 +160,6 @@ EMAIL_USE_TLS = True
 
 STRIPE_PUBLISHABLE_KEY=config('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY=config('STRIPE_SECRET_KEY')
-CSRF_TRUSTED_ORIGINS=['https://web-production-0e528.up.railway.app/','http://127.0.0.1:8000/','https://web-production-0e528.up.railway.app/admin/']
+CSRF_TRUSTED_ORIGINS=['https://*.web-production-0e528.up.railway.app/','http://*.127.0.0.1:8000/']
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
