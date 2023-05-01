@@ -27,7 +27,7 @@ SECRET_KEY=config('SECRET_KEY')
 DEBUG = False
 #DEBUG = config('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://web-production-0e528.up.railway.app/','http://127.0.0.1:8000/']
 
 
 # Application definition
