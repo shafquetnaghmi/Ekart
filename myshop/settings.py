@@ -14,7 +14,7 @@ from pathlib import Path
 from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+import dj_database_url
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -27,7 +27,7 @@ SECRET_KEY=config('SECRET_KEY')
 DEBUG =False
 #DEBUG = config('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['web-production-0e528.up.railway.app','127.0.0.1:8000']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'orders',
     'payment',
     'phone_field',
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,9 +46,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'cloudinary'
     
 
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME':config('CLOUD_NAME'),
+    'API_KEY':config('API_KEY'),
+    'API_SECRET':config('API_SECRET')
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,17 +97,12 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
- 'default': {
- 'ENGINE': 'django.db.backends.postgresql',
- 'NAME': 'railway',
- 'USER': 'postgres',
- 'PASSWORD' :config('PASSWORD'),
- 'HOST':'containers-us-west-114.railway.app',
- 'PORT':'7008'
- }
-}
 
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.parse(config('DATABASE_URL')),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -148,7 +150,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CART_SESSION_ID='cart'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
